@@ -24,14 +24,13 @@ function renderGallery() {
 }
 
 function addEventsInput() {
-    debugger
     var textInput = document.querySelector('[name=textinput]');
-    textInput.addEventListener('keydown', onUpdateValue());
+    textInput.addEventListener('keyup', onUpdateValue);
 }
 
-function onUpdateValue(e) {
+function onUpdateValue(ev) {
     clearText();
-    updateMemeTxt(e.target.value);
+    updateMemeTxt(ev.target.value);
     drawText(getMemeTxt());
 }
 
@@ -58,5 +57,6 @@ function drawText(txt) {
 }
 
 function onChangeImg(img) {
-
+    updateMemeImg(img.id);
+    drawMeme(getMemeImgId());
 }

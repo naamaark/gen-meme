@@ -26,3 +26,7 @@ function getMemeTxt() {
 function updateMemeTxt(txt) {
     gMeme.lines[0].txt = txt;
 }
+
+function updateMemeImg(id) {
+    gMeme.selectedImgId = id;
+}
