@@ -1,27 +1,62 @@
-var gKeywords = { 'happy': 0, 'sad': 0, 'angry': 0, 'man': 0, 'woman': 0, 'animal': 0 }
-var gImgs = [_createImg];
-var gMemes = _createMeme();
+'use strict'
+var gCanvas;
+var gCtx;
 
+function init() {
+    initCanvas();
+    renderGallery();
+    addEventsInput();
+}
 
-function _createImgs() { }
+function initCanvas() {
+    gCanvas = document.getElementById('main-canvas')
+    gCtx = gCanvas.getContext('2d')
+    drawMeme(getMemeImgId());
+}
 
-function _createImg() {
-    return {
-        id: 1,
-        url: 'img/1.jpg',
-        keywords: ['happy']
+function renderGallery() {
+    var imgsIds = getImgsId();
+    var strHtml = imgsIds.map(function (id) {
+        return `<img src="../img/${id}.jpg" onclick="onChangeImg(this)" id="${id}">`
+    })
+    var el = document.querySelector('.gallery-container');
+    el.innerHTML = strHtml.join('');
+}
+
+function addEventsInput() {
+    debugger
+    var textInput = document.querySelector('[name=textinput]');
+    textInput.addEventListener('keydown', onUpdateValue());
+}
+
+function onUpdateValue(e) {
+    clearText();
+    updateMemeTxt(e.target.value);
+    drawText(getMemeTxt());
+}
+
+function clearText() {
+    updateMemeTxt('');
+    drawMeme(getMemeImgId());
+}
+function drawMeme(imgId) {
+    var img = new Image();
+    img.src = `img/${imgId}.jpg`;
+    img.onload = () => {
+        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
+        drawText(getMemeTxt());
     }
 }
 
-function _createMeme(selectedLineIdx = 0, txt = 'Hello', size = '20', align = 'left', color = 'black') {
-    return {
-        selectedImgId: 5,
-        selectedLineIdx: 0,
-        lines: [{
-            txt,
-            size,
-            align,
-            color
-        }]
-    }
+function drawText(txt) {
+    gCtx.font = '48px Impact';
+    gCtx.lineWidth = 2
+    gCtx.strokeStyle = 'black'
+    gCtx.fillStyle = 'white'
+    gCtx.fillText(txt, 50, 50);
+    gCtx.strokeText(txt, 50, 50)
+}
+
+function onChangeImg(img) {
+
 }
