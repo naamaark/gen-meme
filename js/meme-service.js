@@ -2,7 +2,7 @@ var gKeywords = { 'happy': 0, 'sad': 0, 'angry': 0, 'man': 0, 'woman': 0, 'anima
 var gMeme = _createMeme();
 
 
-function _createMeme(selectedLineIdx = 0, txt = 'Hello', size = '20', align = 'left', color = 'black') {
+function _createMeme(selectedLineIdx = 0, txt = 'Hello', size = 20, align = 'left', y = 50, color = 'black') {
     return {
         selectedImgId: 1,
         selectedLineIdx,
@@ -10,6 +10,7 @@ function _createMeme(selectedLineIdx = 0, txt = 'Hello', size = '20', align = 'l
             txt,
             size,
             align,
+            y,
             color
         }]
     }
@@ -29,4 +30,20 @@ function updateMemeTxt(txt) {
 
 function updateMemeImg(id) {
     gMeme.selectedImgId = id;
+}
+
+function getMemeFontSize() {
+    return gMeme.lines[0].size;
+}
+
+function changeMemeFontSize(change) {
+    gMeme.lines[0].size += change;
+}
+
+function getMemeY() {
+    return gMeme.lines[0].y;
+}
+
+function changeMemeY(change) {
+    gMeme.lines[0].y += change;
 }

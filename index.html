@@ -12,7 +12,12 @@
 <body onload="init()">
     <div class="preload-font">.</div>
     <input name="textinput" type="text" placeholder="Enter text">
-    <div class="canvas-container"><canvas id="main-canvas" height="450" width="450"></canvas></div>
+    <button onclick="onChangeFontSize(1)" onmousedown="onConChangeSize(1)" onmouseup="stopChange()">A+</button>
+    <button onclick="onChangeFontSize(-1)" onmousedown="onConChangeSize(-1)" onmouseup="stopChange()">A-</button>
+    <button onclick="onChangeY(-2)" onmousedown="onConChangeY(-2)" onmouseup="stopChange()">↑</button>
+    <button onclick="onChangeY(2)" onmousedown="onConChangeY(2)" onmouseup="stopChange()">↓</button>
+    <button onclick="onSwitchLine()">↑↓</button>
+    <div class=" canvas-container"><canvas id="main-canvas" height="450" width="450"></canvas></div>
     <div class="gallery-container"></div>
     <script src="js/img-service.js"></script>
     <script src="js/meme-service.js"></script>

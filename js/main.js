@@ -1,6 +1,7 @@
 'use strict'
 var gCanvas;
 var gCtx;
+var gInterval;
 
 function init() {
     initCanvas();
@@ -11,7 +12,7 @@ function init() {
 function initCanvas() {
     gCanvas = document.getElementById('main-canvas')
     gCtx = gCanvas.getContext('2d')
-    drawMeme(getMemeImgId());
+    drawMeme();
 }
 
 function renderGallery() {
@@ -36,10 +37,11 @@ function onUpdateValue(ev) {
 
 function clearText() {
     updateMemeTxt('');
-    drawMeme(getMemeImgId());
+    drawMeme();
 }
 function drawMeme(imgId) {
     var img = new Image();
+    var imgId = getMemeImgId();
     img.src = `img/${imgId}.jpg`;
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
@@ -48,15 +50,43 @@ function drawMeme(imgId) {
 }
 
 function drawText(txt) {
-    gCtx.font = '48px Impact';
+    var fontSize = getMemeFontSize();
+    var memeY = getMemeY();
+    gCtx.font = `${fontSize}px Impact`;
     gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'black'
+    gCtx.strokeStyle = 'black';
     gCtx.fillStyle = 'white'
-    gCtx.fillText(txt, 50, 50);
-    gCtx.strokeText(txt, 50, 50)
+    gCtx.fillText(txt, 50, memeY);
+    gCtx.strokeText(txt, 50, memeY)
 }
 
 function onChangeImg(img) {
     updateMemeImg(img.id);
-    drawMeme(getMemeImgId());
+    drawMeme();
+}
+
+function onChangeFontSize(change) {
+    var newFontSize = getMemeFontSize() + change;
+    if (newFontSize < 10 || newFontSize > 56) return
+    changeMemeFontSize(change);
+    drawMeme();
+}
+
+function onChangeY(change) {
+    var newMemeY = getMemeY() + change;
+    if (newMemeY < 0 || newMemeY > gCanvas.height) return
+    changeMemeY(change);
+    drawMeme();
+}
+
+function onConChangeY(change) {
+    gInterval = setInterval(onChangeY, 100, change)
+}
+
+function onConChangeSize(change) {
+    gInterval = setInterval(onChangeFontSize, 100, change)
+}
+
+function stopChange() {
+    clearInterval(gInterval);
 }
