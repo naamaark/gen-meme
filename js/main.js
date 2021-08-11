@@ -17,7 +17,7 @@ function initCanvas() {
 function renderGallery() {
     var imgsIds = getImgsId();
     var strHtml = imgsIds.map(function (id) {
-        return `<img src="../img/${id}.jpg" onclick="onChangeImg(this)" id="${id}">`
+        return `<img src="img/${id}.jpg" onclick="onChangeImg(this)" id="${id}">`
     })
     var el = document.querySelector('.gallery-container');
     el.innerHTML = strHtml.join('');
