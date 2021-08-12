@@ -45,13 +45,13 @@ function drawMeme(imgId) {
     img.src = `img/${imgId}.jpg`;
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
-        drawText(getMemeTxt());
+        drawTexts();
     }
 }
 
-function drawText(txt) {
-    var fontSize = getMemeFontSize();
-    var memeY = getMemeY();
+function drawText(txt, line) {
+    var fontSize = getMemeFontSize(line);
+    var memeY = getMemeY(line);
     gCtx.font = `${fontSize}px Impact`;
     gCtx.lineWidth = 2
     gCtx.strokeStyle = 'black';
@@ -60,20 +60,31 @@ function drawText(txt) {
     gCtx.strokeText(txt, 50, memeY)
 }
 
+function drawTexts() {
+    var lineCount = 0;
+    var meme = getGMeme();
+    meme.lines.forEach(function (line) {
+        drawText(line.txt, lineCount);
+        lineCount++;
+    })
+}
+
 function onChangeImg(img) {
     updateMemeImg(img.id);
     drawMeme();
 }
 
 function onChangeFontSize(change) {
-    var newFontSize = getMemeFontSize() + change;
+    var line = getCurrLine();
+    var newFontSize = getMemeFontSize(line) + change;
     if (newFontSize < 10 || newFontSize > 56) return
     changeMemeFontSize(change);
     drawMeme();
 }
 
 function onChangeY(change) {
-    var newMemeY = getMemeY() + change;
+    var line = getCurrLine();
+    var newMemeY = getMemeY(line) + change;
     if (newMemeY < 0 || newMemeY > gCanvas.height) return
     changeMemeY(change);
     drawMeme();
@@ -89,4 +100,8 @@ function onConChangeSize(change) {
 
 function stopChange() {
     clearInterval(gInterval);
+}
+
+function onSwitchLine() {
+    switchLine();
 }

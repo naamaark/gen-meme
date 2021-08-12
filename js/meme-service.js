@@ -1,6 +1,6 @@
 var gKeywords = { 'happy': 0, 'sad': 0, 'angry': 0, 'man': 0, 'woman': 0, 'animal': 0 }
 var gMeme = _createMeme();
-
+addLine();
 
 function _createMeme(selectedLineIdx = 0, txt = 'Hello', size = 20, align = 'left', y = 50, color = 'black') {
     return {
@@ -16,34 +16,59 @@ function _createMeme(selectedLineIdx = 0, txt = 'Hello', size = 20, align = 'lef
     }
 }
 
+function addLine() {
+    debugger
+    var newLine = {
+        txt: 'Hello',
+        size: 20,
+        align: 'left',
+        y: 80,
+        color: 'black'
+    }
+    gMeme.lines.push(newLine);
+}
+
 function getMemeImgId() {
     return gMeme.selectedImgId;
 }
 
-function getMemeTxt() {
-    return gMeme.lines[0].txt;
+function getMemeTxt(line) {
+    return gMeme.lines[line].txt;
 }
 
 function updateMemeTxt(txt) {
-    gMeme.lines[0].txt = txt;
+    gMeme.lines[gMeme.selectedLineIdx].txt = txt;
 }
 
 function updateMemeImg(id) {
     gMeme.selectedImgId = id;
 }
 
-function getMemeFontSize() {
-    return gMeme.lines[0].size;
+function getMemeFontSize(line) {
+    return gMeme.lines[line].size;
 }
 
 function changeMemeFontSize(change) {
-    gMeme.lines[0].size += change;
+    gMeme.lines[gMeme.selectedLineIdx].size += change;
 }
 
-function getMemeY() {
-    return gMeme.lines[0].y;
+function getMemeY(line) {
+    return gMeme.lines[line].y;
 }
 
 function changeMemeY(change) {
-    gMeme.lines[0].y += change;
+    gMeme.lines[gMeme.selectedLineIdx].y += change;
+}
+
+function getGMeme() {
+    return gMeme;
+}
+
+function getCurrLine() {
+    return gMeme.selectedLineIdx;
+}
+
+function switchLine() {
+    if (gMeme.selectedLineIdx === (gMeme.lines.length - 1)) gMeme.selectedLineIdx = 0;
+    else gMeme.selectedLineIdx++;
 }
