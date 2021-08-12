@@ -1,10 +1,11 @@
 var gImgs = _createImgs();
 
 function _createImgs() {
-    return [
-        _createImg(1),
-        _createImg(2)
-    ]
+    var imgs = [];
+    for (var i = 1; i <= 18; i++) {
+        imgs.push(_createImg(i));
+    }
+    return imgs;
 }
 
 function _createImg(id) {
@@ -16,5 +17,8 @@ function _createImg(id) {
 }
 
 function getImgsId() {
-    return [gImgs[0].id, gImgs[1].id]
+    debugger
+    return gImgs.map(function (img) {
+        return img.id;
+    })
 }

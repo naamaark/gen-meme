@@ -3,26 +3,12 @@ var gCanvas;
 var gCtx;
 var gInterval;
 
-function init() {
-    initCanvas();
-    renderGallery();
-    addEventsInput();
-}
-
 function initCanvas() {
     gCanvas = document.getElementById('main-canvas')
     gCtx = gCanvas.getContext('2d')
     drawMeme();
 }
 
-function renderGallery() {
-    var imgsIds = getImgsId();
-    var strHtml = imgsIds.map(function (id) {
-        return `<img src="img/${id}.jpg" onclick="onChangeImg(this)" id="${id}">`
-    })
-    var el = document.querySelector('.gallery-container');
-    el.innerHTML = strHtml.join('');
-}
 
 function addEventsInput() {
     var textInput = document.querySelector('[name=textinput]');
@@ -69,10 +55,12 @@ function drawTexts() {
     })
 }
 
-function onChangeImg(img) {
+function onChooseImg(img) {
+    switchHomeToEditor();
     updateMemeImg(img.id);
     drawMeme();
 }
+
 
 function onChangeFontSize(change) {
     var line = getCurrLine();

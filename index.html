@@ -10,18 +10,80 @@
 </head>
 
 <body onload="init()">
-    <div class="preload-font">.</div>
-    <input name="textinput" type="text" placeholder="Enter text">
-    <button onclick="onChangeFontSize(1)" onmousedown="onConChangeSize(1)" onmouseup="stopChange()">A+</button>
-    <button onclick="onChangeFontSize(-1)" onmousedown="onConChangeSize(-1)" onmouseup="stopChange()">A-</button>
-    <button onclick="onChangeY(-2)" onmousedown="onConChangeY(-2)" onmouseup="stopChange()">↑</button>
-    <button onclick="onChangeY(2)" onmousedown="onConChangeY(2)" onmouseup="stopChange()">↓</button>
-    <button onclick="onSwitchLine()">↑↓</button>
-    <div class=" canvas-container"><canvas id="main-canvas" height="450" width="450"></canvas></div>
-    <div class="gallery-container"></div>
+    <div class="layout home-layout">
+
+        <header class="header">
+            <div class="main-header main-layout flex align-center space-between">
+                <div class="logo">memegen</div>
+                <div class="nav">
+                    <ul class="clean-list">
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+
+
+        <main class="main-home">
+
+            <div class="main-container">
+                <div class="preload-font">.</div>
+                <div class="search">
+                    <label for="search">Search:</label>
+                    <input type="text" id="search" placeholder="Please enter a search word">
+                </div>
+                <div class="gallery-container"></div>
+                <div class="about" id="me">
+                    <img class="profile-img" src="img/Naama.jpg" alt="">
+                    <h4>Naama Arkin</h4>
+                    <p>Coding academy student</p>
+                    <ul class="clean list">
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-twitter">T</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/naama.arkin.1">
+                                <i class="fa fa-facebook">F</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/naama-arkin-627761208/">
+                                <i class="fa fa-linkedin">L</i>
+                            </a>
+                        </li>
+                    </ul>
+                    <p>
+                        On my journey to become a successful web developer
+                    </p>
+                </div>
+            </div>
+        </main>
+        <div class="canvas-container">
+            <canvas id="main-canvas" height="450" width="450">
+            </canvas>
+        </div>
+        <div class="meme-editor">
+            <h4>Meme Editor</h4>
+            <input name="textinput" type="text" placeholder="Enter text">
+            <button onclick="onChangeFontSize(1)" onmousedown="onConChangeSize(1)" onmouseup="stopChange()">A+</button>
+            <button onclick="onChangeFontSize(-1)" onmousedown="onConChangeSize(-1)"
+                onmouseup="stopChange()">A-</button>
+            <button onclick="onChangeY(-2)" onmousedown="onConChangeY(-2)" onmouseup="stopChange()">↑</button>
+            <button onclick="onChangeY(2)" onmousedown="onConChangeY(2)" onmouseup="stopChange()">↓</button>
+            <button onclick="onSwitchLine()">↑↓</button>
+        </div>
+        <footer class="footer">
+            <h2>memegen</h2>
+        </footer>
+    </div>
     <script src="js/img-service.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
+    <script src="js/main-controller.js"></script>
 </body>
 
 </html>

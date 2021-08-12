@@ -17,7 +17,6 @@ function _createMeme(selectedLineIdx = 0, txt = 'Hello', size = 20, align = 'lef
 }
 
 function addLine() {
-    debugger
     var newLine = {
         txt: 'Hello',
         size: 20,
