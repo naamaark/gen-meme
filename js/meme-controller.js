@@ -10,11 +10,6 @@ function initCanvas() {
 }
 
 
-function addEventsInput() {
-    var textInput = document.querySelector('[name=textinput]');
-    textInput.addEventListener('keyup', onUpdateValue);
-}
-
 function onUpdateValue(ev) {
     clearText();
     updateMemeTxt(ev.target.value);
@@ -56,7 +51,7 @@ function drawTexts() {
 }
 
 function onChooseImg(img) {
-    switchHomeToEditor();
+    switchHomeEditor(img);
     updateMemeImg(img.id);
     drawMeme();
 }

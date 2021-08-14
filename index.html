@@ -7,77 +7,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>meme generator</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body onload="init()">
     <div class="layout home-layout">
 
-        <header class="header">
-            <div class="main-header main-layout flex align-center space-between">
-                <div class="logo">memegen</div>
-                <div class="nav">
-                    <ul class="clean-list">
-                        <li><a href="#">Gallery</a></li>
-                        <li><a href="#">About</a></li>
-                    </ul>
-                </div>
+        <header>
+            <div class="main-header main-layout flex">
+                <!-- couldn't get a logo that works -->
+                <img src="img/memegen.PNG" class="logo-img">
+                <ul class="main-nav flex clean-list">
+                    <li><a id="gallery-a" class="active" onclick="onClickedNavItem(this); switchHomeEditor(this)"
+                            href="#">Gallery</a></li>
+                    <span class="seperator">&#9474</span>
+                    <li><a onclick="onClickedNavItem(this)" href="#about">About</a></li>
+                </ul>
+                <button class="btn-menu-toggle" onclick="onToggleMenu(); toggleBtn()">&#9776</button>
             </div>
         </header>
 
-
-
-        <main class="main-home">
-
-            <div class="main-container">
-                <div class="preload-font">.</div>
+        <main class="flex">
+            <div class="preload-font">.</div>
+            <div class="search-container  main-layout flex align-center">
                 <div class="search">
-                    <label for="search">Search:</label>
-                    <input type="text" id="search" placeholder="Please enter a search word">
+                    <input type="text" class="search" placeholder="Enter a search keyword">
+                    <i class="fas fa-search"></i>
                 </div>
-                <div class="gallery-container"></div>
-                <div class="about" id="me">
-                    <img class="profile-img" src="img/Naama.jpg" alt="">
-                    <h4>Naama Arkin</h4>
+            </div>
+            <section class="gallery-bg">
+                <div class="gallery-container main-layout"></div>
+            </section>
+            <div id="about" class="about main-layout flex center align-center space-between">
+                <img class="profile-img" src="img/Naama.jpg" alt="">
+                <div class="about-desc">
+                    <h3>Naama Arkin</h3>
                     <p>Coding academy student</p>
-                    <ul class="clean list">
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-twitter">T</i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com/naama.arkin.1">
-                                <i class="fa fa-facebook">F</i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.linkedin.com/in/naama-arkin-627761208/">
-                                <i class="fa fa-linkedin">L</i>
-                            </a>
-                        </li>
-                    </ul>
-                    <p>
-                        On my journey to become a successful web developer
-                    </p>
+                    <div class="socials">
+                        <div class="social-icon"><i class="fab fa-linkedin-in"></i></div>
+                        <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
+                        <div class="social-icon"><i class="fab fa-github"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-editor-bg">
+                <div class="main-editor main-layout flex align-center space-between">
+                    <div class="canvas-container">
+                        <canvas id="main-canvas" width="450px" height="450px">
+                        </canvas>
+                    </div>
+                    <div class="meme-editor main-layout">
+                        <input class="txt" name="textinput" type="text" placeholder="Enter text">
+                        <button class="edit-btn larger" onclick="onChangeFontSize(1)" onmousedown="onConChangeSize(1)"
+                            onmouseup="stopChange()">A+</button>
+                        <button class="edit-btn smaller" onclick="onChangeFontSize(-1)"
+                            onmousedown="onConChangeSize(-1)" onmouseup="stopChange()">A-</button>
+                        <button class="edit-btn up" onclick="onChangeY(-2)" onmousedown="onConChangeY(-2)"
+                            onmouseup="stopChange()">↑</button>
+                        <button class="edit-btn down" onclick="onChangeY(2)" onmousedown="onConChangeY(2)"
+                            onmouseup="stopChange()">↓</button>
+                        <button class="edit-btn switch" onclick="onSwitchLine()">↑↓</button>
+                    </div>
                 </div>
             </div>
         </main>
-        <div class="canvas-container">
-            <canvas id="main-canvas" height="450" width="450">
-            </canvas>
-        </div>
-        <div class="meme-editor">
-            <h4>Meme Editor</h4>
-            <input name="textinput" type="text" placeholder="Enter text">
-            <button onclick="onChangeFontSize(1)" onmousedown="onConChangeSize(1)" onmouseup="stopChange()">A+</button>
-            <button onclick="onChangeFontSize(-1)" onmousedown="onConChangeSize(-1)"
-                onmouseup="stopChange()">A-</button>
-            <button onclick="onChangeY(-2)" onmousedown="onConChangeY(-2)" onmouseup="stopChange()">↑</button>
-            <button onclick="onChangeY(2)" onmousedown="onConChangeY(2)" onmouseup="stopChange()">↓</button>
-            <button onclick="onSwitchLine()">↑↓</button>
-        </div>
-        <footer class="footer">
-            <h2>memegen</h2>
+
+        <footer class="flex center align-center">
+            <div class="main-footer main-layout">
+                <img src="img/memegen.PNG" class="logo-img">
+                <p>all rights reserved 2021</p>
+            </div>
         </footer>
     </div>
     <script src="js/img-service.js"></script>

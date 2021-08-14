@@ -3,81 +3,293 @@
     src: url(../fonts/impact.ttf);
 }
 
+@font-face {
+    font-family: Montserrat;
+    src: url(../fonts/Montserrat-Regular.ttf);
+}
+
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url(../fonts/Montserrat-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'fontawesome';
+    src: url("../fonts/FontAwesome.otf");
+    src: url("../fonts/fontawesome-webfont.eot") format("embedded-opentype"), url("../fonts/fontawesome/fontawesome-webfont.woff2") format("woff2"), url("../fonts/fontawesome/fontawesome-webfont.woff") format("woff"), url("../fonts/fontawesome/fontawesome-webfont.ttf") format("truetype"), url("../fonts/fontawesome/fontawesome-webfont.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.fa {
+    display: inline-block;
+    font-family: fontawesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 * {
     box-sizing: border-box;
 }
 
+html {
+    font-family: Montserrat
+}
+
 body {
     margin: auto 0;
+    font-size: 1.187rem;
 }
 
 img {
     width: 100%;
 }
 
-.home-layout {
-    max-width: 100%;
-    display: grid;
-    align-content: center;
-    align-items: center;
-    grid-template-rows: 65px 1fr 200px;
-    grid-template-columns: 1fr 22fr 1fr;
-    grid-template-areas: "header header header" ". main ." "footer footer footer";
+.main-layout {
+    max-width: 330px;
+    margin: 0 auto;
 }
 
-.editor-layout {
-    display: grid;
-    align-content: center;
-    align-items: center;
-    grid-template-rows: 65px 1fr 200px;
-    grid-template-columns: 1fr 11fr 11fr 1fr;
-    grid-template-areas: "header header header header" ". canvas editor ." "footer footer footer footer";
+@media (min-width: 350px) {
+    .main-layout {
+        max-width: 1100px;
+        margin: 0px 50px;
+    }
 }
 
-.header {
-    grid-area: header;
+header {
     background-color: #ff7f00;
 }
 
-.main-home {
-    grid-area: main;
-    margin: 20px;
+main {
+    flex-direction: column;
 }
 
-.footer {
-    grid-area: footer;
-    align-self: stretch;
+.main-header {
+    height: 4.0625rem;
+    flex-direction: column;
+}
+
+.logo-img {
+    width: 10.625rem;
+    height: 4.0625rem;
+    margin: 0;
+    padding: 11px 5px 10.5px 5.5px;
     background-color: #ff7f00;
+}
+
+.main-header .main-nav {
+    color: #ffff;
+    padding: 0px 0px 16px 10px;
+    flex-direction: column;
+    transform: translateY(-120%);
+    transition: transform .6s;
+}
+
+@media (min-width: 470px) {
+    .main-header {
+        height: 4.0625rem;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .main-header .main-nav {
+        height: 100%;
+        flex-direction: row;
+        align-items: center;
+        position: static;
+        justify-content: flex-end;
+        transform: none;
+        gap: 0;
+        padding: 0;
+    }
+    .main-nav a {
+        line-height: 4.0625rem;
+        padding-bottom: 0px !important;
+    }
+    .main-nav .seperator {
+        display: block !important;
+    }
+    .btn-menu-toggle {
+        display: none;
+    }
+    .main-nav .active {
+        color: black;
+        box-shadow: inset 0 -4px 0 #1d1d1d;
+    }
+}
+
+.main-nav a {
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ffff;
+    display: flex;
+    padding-bottom: 30px;
+}
+
+.main-nav a:hover {
+    color: black;
+}
+
+.main-nav .seperator {
+    padding-inline-end: 4px;
+    color: #a78767;
+    display: none;
+}
+
+.btn-menu-toggle {
+    position: fixed;
+    top: 10px;
+    right: 13px;
+    font-size: 1.75rem;
+    background: transparent;
+    color: #ffff;
+    border: none;
+}
+
+body.menu-open .main-header {
+    height: 10.3125rem;
+}
+
+body.menu-open .main-nav {
+    transform: translateY(0);
+}
+
+body.menu-open .screen.light {
+    opacity: 1;
+}
+
+footer {
+    height: 200px;
+    background-color: #ff7f00;
+    color: #ffff;
+}
+
+.main-footer {
+    flex-direction: column;
+}
+
+.search-container {
+    height: 6.25rem;
 }
 
 .search {
-    margin: 20px;
-    display: block;
+    display: inline;
+    border: 0;
+    border-bottom: 1px solid rgb(17, 9, 9);
+}
+
+.gallery-bg {
+    background-color: #e3e3e3;
 }
 
 .gallery-container {
     max-height: 100%;
-    max-width: 1100px;
-    background-color: #e3e3e3;
-    grid-template-rows: repeat(4, 1fr);
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     display: grid;
-    gap: 10px;
-    padding: 10px;
+    gap: 15px;
+    padding: 20px 0;
+}
+
+@media (min-width: 470px) {
+    .gallery-container {
+        display: grid;
+        gap: 20px;
+        padding: 25px 0;
+        grid-template-rows: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.main-editor {
+    padding: 25px 0;
+    flex-direction: column;
+}
+
+@media (min-width: 800px) {
+    .main-editor {
+        flex-direction: row;
+    }
+}
+
+.main-editor-bg {
+    background-color: #e3e3e3;
+    display: none;
 }
 
 .canvas-container {
-    max-height: 100%;
-    grid-area: canvas;
+    object-fit: cover;
+    flex-basis: 50%;
+    max-height: 450px;
+    max-width: 450px;
     display: none;
-    padding: 20px;
+    margin: 10px;
+}
+
+canvas {
+    object-fit: contain;
+    width: 100%;
+    max-height: 450px;
 }
 
 .meme-editor {
-    background-color: #e3e3e3;
+    flex-basis: 50%;
     max-height: 100%;
-    grid-area: editor;
+    max-width: 450px;
     display: none;
+    gap: 10px;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "txt txt txt txt txt" ". up down switch ." ". larger . smaller .";
+}
+
+.meme-editor .txt {
+    height: 2.5rem;
+    border-radius: 12px;
+    grid-area: txt;
+    background-color: #fff;
+}
+
+.meme-editor .edit-btn {
+    font-size: 20px;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 20%;
+    background-color: #fff;
+}
+
+@media (min-width: 280px) {
+    .meme-editor .txt {
+        height: 3.75rem;
+    }
+    .meme-editor .edit-btn {
+        height: 3.75rem;
+        width: 3.75rem;
+    }
+}
+
+.meme-editor .up {
+    grid-area: up;
+}
+
+.meme-editor .down {
+    grid-area: down;
+}
+
+.meme-editor .switch {
+    grid-area: switch;
+}
+
+.meme-editor .larger {
+    grid-area: larger;
+}
+
+.meme-editor .smaller {
+    grid-area: smaller;
 }
 
 .preload-font {
@@ -96,10 +308,6 @@ flex helpers */
     justify-content: space-between;
 }
 
-.flex.column {
-    flex-flow: column;
-}
-
 .flex.center {
     justify-content: center;
 }
@@ -108,39 +316,91 @@ flex helpers */
     align-items: center;
 }
 
-.team-member {
-    text-align: center;
+/* About */
+
+.about {
+    max-width: 830px;
+    margin: 0 auto;
+    padding: 80px 0px;
+    flex-direction: column;
 }
 
-.team-member img {
-    width: 225px;
-    height: 225px;
-    border: 7px solid white;
-}
-
-.team-member h4 {
-    margin-top: 25px;
-    margin-bottom: 0;
-    text-transform: none;
-}
-
-.team-member p {
-    margin-top: 0;
+.about h3 {
+    font-family: Montserrat-Bold;
+    font-size: 1rem;
 }
 
 .about-description {
     max-width: 80%;
 }
 
-.about {
-    display: block;
+.about p {
+    font-size: 0.875rem;
+}
+
+@media (min-width: 470px) {
+    .about {
+        flex-direction: row;
+    }
+    .about p {
+        font-size: 1.25rem;
+    }
+    .about h3 {
+        font-family: Montserrat-Bold;
+        font-size: 1.56rem;
+    }
 }
 
 .clean-list {
     list-style-type: none;
     margin: 0;
+    text-decoration: none;
 }
 
 .profile-img {
-    width: 100%;
+    width: 45%;
+    height: 45%;
+    min-width: 235px;
+    margin: 0 19px 0 0;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.fab {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.15rem;
+}
+
+.social-icon:hover {
+    background-color: #8a4603;
+    transition: 0.3s;
+}
+
+.socials {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.social-icon {
+    cursor: pointer;
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    background-color: #ff7f00;
+    border-radius: 20%;
+}
+
+@media (min-width: 470px) {
+    .social-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .socials {
+        gap: 1.25rem;
+    }
 }
