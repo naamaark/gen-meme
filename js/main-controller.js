@@ -53,7 +53,6 @@ function switchHomeEditor(el) {
             link.classList.remove('active');
         })
     } else if (gPage === 'editor') {
-        window.removeEventListener('resize');
         gPage = 'home';
         elEditorBg.style.display = 'none';
         elGallery.style.display = 'grid';
