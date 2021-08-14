@@ -1,8 +1,8 @@
-var gKeywords = { 'happy': 0, 'sad': 0, 'angry': 0, 'man': 0, 'woman': 0, 'animal': 0 }
-var gMeme = _createMeme();
-addLine();
+var lastLineY = 50;
 
-function _createMeme(selectedLineIdx = 0, txt = 'Hello', size = 20, align = 'left', y = 50, color = 'black') {
+var gMeme = _createMeme();
+
+function _createMeme(selectedLineIdx = 0, txt = 'Hello', size = 40, align = 'left', y = 50, color = 'black') {
     return {
         selectedImgId: 1,
         selectedLineIdx,
@@ -19,11 +19,12 @@ function _createMeme(selectedLineIdx = 0, txt = 'Hello', size = 20, align = 'lef
 function addLine() {
     var newLine = {
         txt: 'Hello',
-        size: 20,
+        size: 40,
         align: 'left',
-        y: 80,
+        y: lastLineY,
         color: 'black'
     }
+    lastLineY += 30;
     gMeme.lines.push(newLine);
 }
 

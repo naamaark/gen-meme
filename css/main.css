@@ -14,6 +14,11 @@
 }
 
 @font-face {
+    font-family: Changa-Bold;
+    src: url(../fonts/Changa-ExtraBold.ttf);
+}
+
+@font-face {
     font-family: 'fontawesome';
     src: url("../fonts/FontAwesome.otf");
     src: url("../fonts/fontawesome-webfont.eot") format("embedded-opentype"), url("../fonts/fontawesome/fontawesome-webfont.woff2") format("woff2"), url("../fonts/fontawesome/fontawesome-webfont.woff") format("woff"), url("../fonts/fontawesome/fontawesome-webfont.ttf") format("truetype"), url("../fonts/fontawesome/fontawesome-webfont.svg") format("svg");
@@ -72,19 +77,18 @@ main {
     flex-direction: column;
 }
 
-.logo-img {
-    width: 10.625rem;
-    height: 4.0625rem;
+.logo {
+    font-family: Changa-Bold;
+    font-size: 1.8rem;
+    color: #fff;
     margin: 0;
-    padding: 11px 5px 10.5px 5.5px;
-    background-color: #ff7f00;
 }
 
 .main-header .main-nav {
     color: #ffff;
     padding: 0px 0px 16px 10px;
     flex-direction: column;
-    transform: translateY(-120%);
+    transform: translateY(-150%);
     transition: transform .6s;
 }
 
@@ -182,6 +186,11 @@ footer {
     border-bottom: 1px solid rgb(17, 9, 9);
 }
 
+.search-btn {
+    background-color: #fff;
+    border: 0;
+}
+
 .gallery-bg {
     background-color: #e3e3e3;
 }
@@ -244,7 +253,7 @@ canvas {
     gap: 10px;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-areas: "txt txt txt txt txt" ". up down switch ." ". larger . smaller .";
+    grid-template-areas: "txt txt txt txt txt" ". up down switch clear" ". larger add smaller .";
 }
 
 .meme-editor .txt {
@@ -255,7 +264,8 @@ canvas {
 }
 
 .meme-editor .edit-btn {
-    font-size: 20px;
+    font-size: 25px;
+    font-weight: bold;
     height: 2.5rem;
     width: 2.5rem;
     border-radius: 20%;
@@ -282,6 +292,14 @@ canvas {
 
 .meme-editor .switch {
     grid-area: switch;
+}
+
+.meme-editor .add {
+    grid-area: add;
+}
+
+.meme-editor .clear {
+    grid-area: clear;
 }
 
 .meme-editor .larger {

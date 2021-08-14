@@ -88,3 +88,7 @@ function stopChange() {
 function onSwitchLine() {
     switchLine();
 }
+
+function clearMeme() {
+    gMeme.lines = [];
+}

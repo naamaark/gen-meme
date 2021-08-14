@@ -17,8 +17,7 @@
 
         <header>
             <div class="main-header main-layout flex">
-                <!-- couldn't get a logo that works -->
-                <img src="img/memegen.PNG" class="logo-img">
+                <h2 class="logo">memegen</h2>
                 <ul class="main-nav flex clean-list">
                     <li><a id="gallery-a" class="active" onclick="onClickedNavItem(this); switchHomeEditor(this)"
                             href="#">Gallery</a></li>
@@ -33,8 +32,8 @@
             <div class="preload-font">.</div>
             <div class="search-container  main-layout flex align-center">
                 <div class="search">
-                    <input type="text" class="search" placeholder="Enter a search keyword">
-                    <i class="fas fa-search"></i>
+                    <input name="search" type="text" class="search" placeholder="Enter a search keyword">
+                    <button onclick="onSearch()" class="search-btn"><i class="fas fa-search"></i></button>
                 </div>
             </div>
             <section class="gallery-bg">
@@ -46,9 +45,12 @@
                     <h3>Naama Arkin</h3>
                     <p>Coding academy student</p>
                     <div class="socials">
-                        <div class="social-icon"><i class="fab fa-linkedin-in"></i></div>
-                        <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
-                        <div class="social-icon"><i class="fab fa-github"></i></div>
+                        <div onclick="location.href='https://www.linkedin.com/in/naama-arkin-627761208/';"
+                            class="social-icon"><i class="fab fa-linkedin-in"></i></div>
+                        <div onclick="location.href='https://www.facebook.com/naama.arkin.1';" class="social-icon"><i
+                                class="fab fa-facebook-f"></i></div>
+                        <div onclick="location.href='https://github.com/naamaark';" class="social-icon"><i
+                                class="fab fa-github"></i></div>
                     </div>
                 </div>
             </div>
@@ -69,14 +71,16 @@
                         <button class="edit-btn down" onclick="onChangeY(2)" onmousedown="onConChangeY(2)"
                             onmouseup="stopChange()">↓</button>
                         <button class="edit-btn switch" onclick="onSwitchLine()">↑↓</button>
+                        <button class="edit-btn add" onclick="onAddLine()">&#10010</button>
+                        <button class="edit-btn clear" onclick="onClearMeme()"><i class="far fa-trash-alt"></i></button>
                     </div>
                 </div>
             </div>
         </main>
 
         <footer class="flex center align-center">
-            <div class="main-footer main-layout">
-                <img src="img/memegen.PNG" class="logo-img">
+            <div class="main-footer main-layout flex center align-center">
+                <h2 class="logo">memegen</h2>
                 <p>all rights reserved 2021</p>
             </div>
         </footer>

@@ -1,6 +1,7 @@
 'use strict'
 
 var gPage = 'home';
+var gFilter = 'all';
 
 function init() {
     initCanvas();
@@ -15,7 +16,7 @@ function addEventsInput() {
 }
 
 function renderGallery() {
-    var imgsIds = getImgsId();
+    var imgsIds = getImgsId(gFilter);
     var strHtml = imgsIds.map(function (id) {
         return `<img src="img/${id}.jpg" onclick="onChooseImg(this)" id="${id}">`
     })
@@ -69,6 +70,16 @@ function onToggleMenu() {
     document.body.classList.toggle('menu-open')
 }
 
+function onAddLine() {
+    addLine();
+    drawMeme();
+}
+
+function onClearMeme() {
+    clearMeme();
+    drawMeme();
+}
+
 function toggleBtn() {
     var elToggle = document.querySelector('.btn-menu-toggle')
     if (document.body.className === 'menu-open') elToggle.innerHTML = '&#10005';
@@ -80,5 +91,11 @@ function resizeCanvas() {
     if (elContainer.offsetHeight === 0 || elContainer.offsetWidth === 0) return
     gCanvas.width = elContainer.offsetWidth;
     gCanvas.height = elContainer.offsetWidth;
+}
+
+function onSearch() {
+    var inputSearch = document.querySelector('[name=search]');
+    gFilter = inputSearch.value;
+    renderGallery();
 }
 
