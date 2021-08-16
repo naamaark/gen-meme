@@ -49,7 +49,7 @@
                             class="social-icon"><i class="fab fa-linkedin-in"></i></div>
                         <div onclick="location.href='https://www.facebook.com/naama.arkin.1';" class="social-icon"><i
                                 class="fab fa-facebook-f"></i></div>
-                        <div onclick="location.href='https://github.com/naamaark';" class="social-icon"><i
+                        <div onclick="location.href='https://www.facebook.com/naama.arkin.1';" class="social-icon"><i
                                 class="fab fa-github"></i></div>
                     </div>
                 </div>
@@ -62,17 +62,25 @@
                     </div>
                     <div class="meme-editor main-layout">
                         <input class="txt" name="textinput" type="text" placeholder="Enter text">
-                        <button class="edit-btn larger" onclick="onChangeFontSize(1)" onmousedown="onConChangeSize(1)"
-                            onmouseup="stopChange()">A+</button>
-                        <button class="edit-btn smaller" onclick="onChangeFontSize(-1)"
-                            onmousedown="onConChangeSize(-1)" onmouseup="stopChange()">A-</button>
-                        <button class="edit-btn up" onclick="onChangeY(-2)" onmousedown="onConChangeY(-2)"
-                            onmouseup="stopChange()">↑</button>
-                        <button class="edit-btn down" onclick="onChangeY(2)" onmousedown="onConChangeY(2)"
-                            onmouseup="stopChange()">↓</button>
-                        <button class="edit-btn switch" onclick="onSwitchLine()">↑↓</button>
-                        <button class="edit-btn add" onclick="onAddLine()">&#10010</button>
-                        <button class="edit-btn clear" onclick="onClearMeme()"><i class="far fa-trash-alt"></i></button>
+                        <div class="edit-btn larger" onclick="onChangeFontSize(1)"><img class="iconBtn"
+                                src="img/icons/increase font - icon.png" /></div>
+                        <div class="edit-btn smaller" onclick="onChangeFontSize(-1)"><img class="iconBtn"
+                                src="img/icons/decrease font - icon.png" /></div>
+                        <div class="edit-btn up" onclick="onChangeTxtPos(-2)" onmouseup="stopChange()"><img class="iconBtn"
+                            src="img/icons/up-arrow.png" /></div>
+                        <div class=" edit-btn down" onclick="onChangeTxtPos(2)" onmouseup="stopChange()"><img class="iconBtn"
+                            src="img/icons/down-arrow.png" /></i></div>
+                        <div class="edit-btn switch" onclick="onSwitchLine()"><img class="iconBtn"
+                                src="img/icons/switchBtn.png" /></div>
+                        <div class="edit-btn add" onclick="onAddLine()"><img class="iconBtn" src="img/Icons/add.png" />
+                        </div>
+                        <div class="edit-btn clear" onclick="onClearMeme()"><img class="iconBtn"
+                                src="img/icons/trash.png" /></div>
+                        <div class="download-btn">
+                            <a href="" download='my-meme' onclick="onDownloadImg(this)">
+                                Download
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

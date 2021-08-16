@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box;
+}
+
+/* FONTS */
+
 @font-face {
     font-family: Impact;
     src: url(../fonts/impact.ttf);
@@ -26,21 +32,33 @@
     font-style: normal;
 }
 
-.fa {
-    display: inline-block;
-    font-family: fontawesome;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+.preload-font {
+    font-family: impact;
+    display: none;
 }
 
-* {
-    box-sizing: border-box;
+/* flex helpers  */
+
+.flex {
+    display: flex;
 }
+
+.flex.space-between {
+    justify-content: space-between;
+}
+
+.flex.center {
+    justify-content: center;
+}
+
+.flex.align-center {
+    align-items: center;
+}
+
+/* BASIC */
 
 html {
-    font-family: Montserrat
+    font-family: Montserrat;
 }
 
 body {
@@ -51,6 +69,28 @@ body {
 img {
     width: 100%;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+}
+
+.clean-list {
+    list-style-type: none;
+    margin: 0;
+    text-decoration: none;
+}
+
+/* MAIN LAYOUT */
 
 .main-layout {
     max-width: 330px;
@@ -64,12 +104,10 @@ img {
     }
 }
 
+/* HEADER */
+
 header {
     background-color: #ff7f00;
-}
-
-main {
-    flex-direction: column;
 }
 
 .main-header {
@@ -166,15 +204,13 @@ body.menu-open .screen.light {
     opacity: 1;
 }
 
-footer {
-    height: 200px;
-    background-color: #ff7f00;
-    color: #ffff;
-}
+/* MAIN */
 
-.main-footer {
+main {
     flex-direction: column;
 }
+
+/* SEARCH */
 
 .search-container {
     height: 6.25rem;
@@ -190,6 +226,8 @@ footer {
     background-color: #fff;
     border: 0;
 }
+
+/* GALLERY */
 
 .gallery-bg {
     background-color: #e3e3e3;
@@ -214,6 +252,93 @@ footer {
     }
 }
 
+/* ABOUT */
+
+.about {
+    max-width: 830px;
+    margin: 0 auto;
+    padding: 80px 0px;
+    flex-direction: column;
+}
+
+.about .profile-img {
+    width: 45%;
+    height: 45%;
+    min-width: 235px;
+    margin: 0 19px 0 0;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.about h3 {
+    font-family: Montserrat-Bold;
+    font-size: 1rem;
+}
+
+.about .about-description {
+    max-width: 80%;
+}
+
+.about p {
+    font-size: 0.875rem;
+}
+
+@media (min-width: 470px) {
+    .about {
+        flex-direction: row;
+    }
+    .about p {
+        font-size: 1.25rem;
+    }
+    .about h3 {
+        font-family: Montserrat-Bold;
+        font-size: 1.56rem;
+    }
+}
+
+/* SOCIALS */
+
+.fab {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.15rem;
+}
+
+.socials {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.social-icon {
+    cursor: pointer;
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    background-color: #ff7f00;
+    border-radius: 20%;
+}
+
+.social-icon:hover {
+    background-color: #8a4603;
+    transition: 0.3s;
+}
+
+@media (min-width: 470px) {
+    .social-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .socials {
+        gap: 1.25rem;
+    }
+}
+
+/* EDITOR MODE */
+
 .main-editor {
     padding: 25px 0;
     flex-direction: column;
@@ -230,6 +355,8 @@ footer {
     display: none;
 }
 
+/* CANVAS */
+
 .canvas-container {
     object-fit: cover;
     flex-basis: 50%;
@@ -245,6 +372,8 @@ canvas {
     max-height: 450px;
 }
 
+/* MEME EDITOR */
+
 .meme-editor {
     flex-basis: 50%;
     max-height: 100%;
@@ -253,7 +382,7 @@ canvas {
     gap: 10px;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-areas: "txt txt txt txt txt" ". up down switch clear" ". larger add smaller .";
+    grid-template-areas: "txt txt txt txt txt" ". up down switch ." ". larger add smaller ." ". clear download download .";
 }
 
 .meme-editor .txt {
@@ -264,22 +393,19 @@ canvas {
 }
 
 .meme-editor .edit-btn {
-    font-size: 25px;
-    font-weight: bold;
-    height: 2.5rem;
+    background-color: white;
+    border-radius: 10px;
+    padding: 0.375rem;
+    align-self: center;
+    align-items: center;
     width: 2.5rem;
-    border-radius: 20%;
-    background-color: #fff;
+    height: 2.5rem;
 }
 
-@media (min-width: 280px) {
-    .meme-editor .txt {
-        height: 3.75rem;
-    }
-    .meme-editor .edit-btn {
-        height: 3.75rem;
-        width: 3.75rem;
-    }
+.meme-editor .iconBtn {
+    width: 40px;
+    height: 40px;
+    padding: 0.375rem;
 }
 
 .meme-editor .up {
@@ -310,115 +436,41 @@ canvas {
     grid-area: smaller;
 }
 
-.preload-font {
-    font-family: impact;
-    display: none;
-}
-
-/* 
-flex helpers */
-
-.flex {
-    display: flex;
-}
-
-.flex.space-between {
-    justify-content: space-between;
-}
-
-.flex.center {
-    justify-content: center;
-}
-
-.flex.align-center {
-    align-items: center;
-}
-
-/* About */
-
-.about {
-    max-width: 830px;
-    margin: 0 auto;
-    padding: 80px 0px;
-    flex-direction: column;
-}
-
-.about h3 {
-    font-family: Montserrat-Bold;
-    font-size: 1rem;
-}
-
-.about-description {
-    max-width: 80%;
-}
-
-.about p {
-    font-size: 0.875rem;
-}
-
-@media (min-width: 470px) {
-    .about {
-        flex-direction: row;
-    }
-    .about p {
-        font-size: 1.25rem;
-    }
-    .about h3 {
-        font-family: Montserrat-Bold;
-        font-size: 1.56rem;
-    }
-}
-
-.clean-list {
-    list-style-type: none;
-    margin: 0;
-    text-decoration: none;
-}
-
-.profile-img {
-    width: 45%;
-    height: 45%;
-    min-width: 235px;
-    margin: 0 19px 0 0;
-    object-fit: contain;
-    border-radius: 50%;
-}
-
-.fab {
-    color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1.15rem;
-}
-
-.social-icon:hover {
-    background-color: #8a4603;
-    transition: 0.3s;
-}
-
-.socials {
-    display: flex;
-    gap: 0.8rem;
-}
-
-.social-icon {
-    cursor: pointer;
-    position: relative;
-    width: 2rem;
-    height: 2rem;
-    text-align: center;
+.meme-editor .download-btn {
+    grid-area: download;
     background-color: #ff7f00;
-    border-radius: 20%;
+    border-radius: 10px;
+    padding: 0.375rem;
+    align-self: center;
+    align-items: center;
+    width: 120px;
+    height: 60px;
+    align-items: center;
+    
 }
 
-@media (min-width: 470px) {
-    .social-icon {
-        width: 2.5rem;
-        height: 2.5rem;
+.meme-editor .download-btn a{
+    color: #fff;
+}
+
+@media (min-width: 280px) {
+    .meme-editor .txt {
+        height: 3.75rem;
     }
-    .socials {
-        gap: 1.25rem;
+    .meme-editor .edit-btn {
+        height: 3.75rem;
+        width: 3.75rem;
     }
+}
+
+/* FOOTER */
+
+footer {
+    height: 200px;
+    background-color: #ff7f00;
+    color: #ffff;
+}
+
+.main-footer {
+    flex-direction: column;
 }

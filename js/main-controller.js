@@ -99,3 +99,9 @@ function onSearch() {
     renderGallery();
 }
 
+function onChooseImg(img) {
+    switchHomeEditor(img);
+    updateMemeImg(img.id);
+    drawMeme();
+}
+

@@ -6,6 +6,7 @@ function _createMeme(selectedLineIdx = 0, txt = 'Hello', size = 40, align = 'lef
     return {
         selectedImgId: 1,
         selectedLineIdx,
+        img: '',
         lines: [{
             txt,
             size,
@@ -32,8 +33,8 @@ function getMemeImgId() {
     return gMeme.selectedImgId;
 }
 
-function getMemeTxt(line) {
-    return gMeme.lines[line].txt;
+function getMemeTxt() {
+    return gMeme.lines[gMeme.selectedLineIdx].txt;
 }
 
 function updateMemeTxt(txt) {

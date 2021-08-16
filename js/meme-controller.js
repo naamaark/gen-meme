@@ -13,7 +13,7 @@ function initCanvas() {
 function onUpdateValue(ev) {
     clearText();
     updateMemeTxt(ev.target.value);
-    drawText(getMemeTxt());
+    drawText(getMemeTxt(), getCurrLine());
 }
 
 function clearText() {
@@ -27,6 +27,7 @@ function drawMeme(imgId) {
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
         drawTexts();
+        gMeme.img = gCanvas.toDataURL("image/jpeg");
     }
 }
 
@@ -48,12 +49,6 @@ function drawTexts() {
         drawText(line.txt, lineCount);
         lineCount++;
     })
-}
-
-function onChooseImg(img) {
-    switchHomeEditor(img);
-    updateMemeImg(img.id);
-    drawMeme();
 }
 
 
@@ -91,4 +86,8 @@ function onSwitchLine() {
 
 function clearMeme() {
     gMeme.lines = [];
+}
+
+function onDownloadImg(elLink) {
+    elLink.href = gMeme.img;
 }
